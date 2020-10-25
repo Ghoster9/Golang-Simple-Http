@@ -22,6 +22,7 @@ func main() {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request)  {
+	log.Println(r.URL.Path)
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
