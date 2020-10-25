@@ -8,7 +8,9 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
+	//root
 	mux.HandleFunc("/", homeHandler)
+
 	mux.HandleFunc("/hello", helloHandler)
 	mux.HandleFunc("/mario", marioHandler)
 
@@ -20,6 +22,10 @@ func main() {
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request)  {
+	if r.URL.Path != "/" {
+		http.NotFound(w, r)
+		return
+	}
 	w.Write([]byte("welcome to home"))
 }
 
