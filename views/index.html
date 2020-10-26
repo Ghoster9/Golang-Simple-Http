@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Golang web</title>
+    <title>{{ .title }}</title>
     <style>
       .text {
         background-color: mediumseagreen;
@@ -11,6 +11,6 @@
     </style>
   </head>
   <body>
-    <div class="text">Halo saya sedang belajar.</div>
+    <div class="text">{{ .Content }}</div>
   </body>
 </html>
