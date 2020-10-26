@@ -9,6 +9,7 @@ import (
 	"strconv"
 )
 
+// root access
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println(r.URL.Path)
 	if r.URL.Path != "/" {
@@ -35,14 +36,17 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// /hello
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("hello world, saya sedang belajar"))
 }
 
+// /mario
 func MarioHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write([]byte("hello mario, sedang apa?"))
 }
 
+// /product?id=1
 func ProductHandler(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Query().Get("id")
 
