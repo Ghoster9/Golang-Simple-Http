@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -11,23 +10,27 @@ import (
 
 // root access
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
+	// request halaman root
 	log.Println(r.URL.Path)
 	if r.URL.Path != "/" {
 		http.NotFound(w, r)
 		return
 	}
-	tmpl, err := template.ParseFiles(path.Join("views", "index.html"))
+	//jooin file
+	tmpl, err := template.ParseFiles(path.Join("views", "index.html"), path.Join("views", "layout.html"))
+	// error testing index html
 	if err != nil {
 		log.Println(err)
 		http.Error(w, "Error is happening, keep calm", http.StatusInternalServerError)
 		return
 	}
 
+	// data static untuk read di html untuk interface bisa mereturnk bebas tipe data
 	data := map[string]interface{}{
 		"title":   "i'm learn golang web",
-		"Content": "I'm learning golang web with zaky",
+		"content": "I'm learning golang web with zaky",
 	}
-
+	// error testing res req
 	err = tmpl.Execute(w, data)
 	if err != nil {
 		log.Println(err)
@@ -58,5 +61,26 @@ func ProductHandler(w http.ResponseWriter, r *http.Request) {
 
 	//w.Write([]byte("Product Page"))
 
-	fmt.Fprintf(w, "Product page: %d", idNumb)
+	// fmt.Fprintf(w, "Product page: %d", idNumb)
+
+	data := map[string]interface{}{
+		"content": idNumb,
+	}
+
+	// template can use for call page
+	tmpl, err := template.ParseFiles(path.Join("views", "product.html"), path.Join("views", "layout.html"))
+	// error testing index html
+	if err != nil {
+		log.Println(err)
+		http.Error(w, "Error is happening, keep calm", http.StatusInternalServerError)
+		return
+	}
+
+	// error testing res req
+	err = tmpl.Execute(w, data)
+	if err != nil {
+		log.Println(err)
+		http.Error(w, "Error is happening, keep calm", http.StatusInternalServerError)
+		return
+	}
 }
