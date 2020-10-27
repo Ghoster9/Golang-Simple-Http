@@ -15,11 +15,15 @@ func main() {
 
 	//root
 	mux.HandleFunc("/", handler.HomeHandler)
-
 	mux.HandleFunc("/hello", handler.HelloHandler)
 	mux.HandleFunc("/mario", handler.MarioHandler)
 	mux.HandleFunc("/product", handler.ProductHandler)
 
+	// ini untuk membaca file asset yang bersi style
+	fileServer := http.FileServer(http.Dir("assets"))
+
+	//mengload dengan rooting
+	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 	//mux.HandleFunc("/about", aboutHandler)
 	//mux.HandleFunc("/profile", func(w http.ResponseWriter, r *http.Request) {
 	//	w.Write([]byte("Profile"))
