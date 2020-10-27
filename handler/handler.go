@@ -95,3 +95,18 @@ func ProductHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 }
+
+// func for get or post method ~~harus huruf kapital untuk eksport func
+func PostGet(w http.ResponseWriter, r *http.Request) {
+	method := r.Method //get or post
+
+	switch method {
+	case "GET":
+		w.Write([]byte("ini adalh Get"))
+	case "POST":
+		w.Write([]byte("ini adalah POST"))
+	default:
+		http.Error(w, "error is heppening, keep calm", http.StatusBadRequest)
+	}
+
+}

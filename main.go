@@ -18,6 +18,7 @@ func main() {
 	mux.HandleFunc("/hello", handler.HelloHandler)
 	mux.HandleFunc("/mario", handler.MarioHandler)
 	mux.HandleFunc("/product", handler.ProductHandler)
+	mux.HandleFunc("/post-get", handler.PostGet)
 
 	// ini untuk membaca file asset yang bersi style
 	fileServer := http.FileServer(http.Dir("assets"))
