@@ -35,8 +35,8 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	// data := entity.Product{ID: 1, Name: "Mobilio", Price: 220000000, Stock: 3}
 
 	data := []entity.Product{
-		{ID: 1, Name: "Mobilio", Price: 20200202020, Stock: 3},
-		{ID: 2, Name: "Damkar", Price: 40000000020, Stock: 2},
+		{ID: 1, Name: "Mobilio", Price: 20200202020, Stock: 12},
+		{ID: 2, Name: "Damkar", Price: 40000000020, Stock: 7},
 		{ID: 3, Name: "Toyota", Price: 894289321020, Stock: 1},
 		{ID: 4, Name: "xpander", Price: 30030302020, Stock: 8},
 	}

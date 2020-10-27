@@ -1,5 +1,3 @@
 {{template "layout" .}} {{ define "main"}} {{ range .}}
-<div class="text">
-  {{.Name}} - {{ .Price }} {{if lt .Stock 3}}Stock hampir habis {{end}}
-</div>
+<div class="text">{{.Name}} - {{ .Price }} - {{ .StockStatus }}</div>
 {{end}} {{end}}
