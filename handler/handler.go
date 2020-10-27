@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"golangweb/entity"
 	"html/template"
 	"log"
 	"net/http"
@@ -26,10 +27,13 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// data static untuk read di html untuk interface bisa mereturnk bebas tipe data
-	data := map[string]interface{}{
-		"title":   "i'm learn golang web",
-		"content": "I'm learning golang web with zaky",
-	}
+	// data := map[string]interface{}{
+	// 	"title":   "i'm learn golang web",
+	// 	"content": "I'm learning golang web with zaky",
+	// }
+
+	data := entity.Product{ID: 1, Name: "Mobilio", Price: 220000000, Stock: 3}
+
 	// error testing res req
 	err = tmpl.Execute(w, data)
 	if err != nil {
